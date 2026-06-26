@@ -1,45 +1,45 @@
 # Metodología de análisis de vulnerabilidades y explotación #
 
-## 1. Introduccion
+## 1. Introducción
 
-Este documento presenta una vision personal tecnioca sobre analisis de vulnerabilidades y desarrollo de sploits en entornos reales. El objetivo no es solo reproducir pruebas, sino definir la metodologia de trabajo, una metodologia solida, practica y orientada a la investigacion que permita comprender el origen de una vulnerabilidad para medir su impacto y documentar de forma profesional los hallazgos obtenidos.
+Este documento presenta una visión personal técnica sobre análisis de vulnerabilidades y desarrollo de sploits en entornos reales. El objetivo no es solo reproducir pruebas, sino definir una metodología de trabajo solida, práctica y orientada a la investigación que permita comprender el origen de una vulnerabilidad para medir su impacto y documentar de forma profesional los hallazgos obtenidos.
 
-A lo largo del trabajo expongo mi enfoque metodologico y varios casos reales asi como ejercicios practicos de explotacion.
+A lo largo del trabajo expongo mi enfoque metodologico y varios casos reales, asi como ejercicios prácticos de explotación.
 
 
 ## 2. Objetivos del trabajo
 
-## Los objeticfos del proyecto son los siguientes:
-        - Definir una metologia para el analisis tecnico de vulnerabilidades.
-        - Explicar que herramientas usaria en cada una de la fase del proceso.
-        - Mostrar casos reales p entornos de practica para trabajar tecnicas de explotacion
-        - Describir el flujo de investigaacion aplicable a la busqueda de analisis potenciales de 0days.
-        - construir una documentacion tecnica reutilizable como parte de mi portafolio profesional.
+## Los objetivos del proyecto son los siguientes:
+        - Definir una metologia para el análisis técnico de vulnerabilidades.
+        - Explicar que herramientas usaría en cada una de la fase del proceso.
+        - Mostrar casos reales y entornos de práctica para trabajar técnicas de explotación
+        - Describir el flujo de investigaación aplicable a la búsqueda de análisis potenciales de 0days.
+        - Construir una documentación técnica reutilizable como parte de mi portafolio profesional.
 
-## 3. Mi enfoque metodolico
+## 3. Mi enfoque metodológico
 
-Mi aproximacion al analisis de vulnerabilidad parte de una idea pricipal: antes de explorar un fallo, es necesario comprender con precision el sofware afectad, su contextode ejecucion, la superficie de ataque y protecciones de en el sistema.
+Mi aproximación al análisis de vulnerabilidad parte de una idea principal: antes de explorar un fallo, es necesario comprender con precisión el sofware afectado, su contexto de ejecución, la superficie de ataque y protecciones del sistema.
 
 ## 3.1. Fase 1: Reconocimiento
     - Tipo de sofware o binario.
     - OS y arquitectura.
     - Dependencias externas y librerias.
     - Superficie de ataque.
-    - Tipo de interaccion requerida.
+    - Tipo de interacción requerida.
 
-El objetivos es reconcer el que voy a analizar y en que condiciones se ejecuta.
+El objetivo es reconocer qué es lo que voy a analizar y en qué condiciones se ejecuta.
 
-## 3.2. Fase 2: preparacion de entorno
-antes de profundizar en el analisis, preparo un entorno controlado que me permita experimentar sin afectar a mas sistemas.
+## 3.2. Fase 2: Preparación de entorno
+Antes de profundizar en el análisis, preparo un entorno controlado que me permita experimentar sin afectar a más sistemas.
 
     - VM o laboratorio aislado.
     - Snapshots para volver a estados anteriores.
-    - Herramientas de depuracion y trazado.
+    - Herramientas de depuración y trazado.
     - Versiones vulnerables y versiones parcheadas si existen.
     - Scripts para automatizar pruebas repetitivas.
 
-## 3.3. Fase 3: Analisis estatico
-El analisis estatico perminte estudiar la logica del binario o aplicacion sin la necesidad de ejecutarlo, en esta fase busco:
+## 3.3. Fase 3: Análisis estático
+El análisis estático permite estudiar la lógica o aplicación del binario sin la necesidad de ejecutarlo. En esta fase busco:
 
     - Funciones sensibles.
     - Validaciones insuficientes.
@@ -47,7 +47,7 @@ El analisis estatico perminte estudiar la logica del binario o aplicacion sin la
     - Manejo incorrecto de entradas de usuarios.
     - Patrones tipicos de vulnerabilidades.
 
-Herramientas tipicas
+Herramientas típicas
 
     - strings
     - file
@@ -58,10 +58,10 @@ Herramientas tipicas
     - IDA Free
     - Cutter / radare2
 
-En este codigo no es solo leer codigo sino formular hipotesis sobre donde puede aparecer el fallo.
+En este codigo no es solo leerlo, sino formular hipótesis sobre dónde puede aparecer el fallo.
 
-## 3.4. Fase 4: Analisis dinamico
-Una vez generamos esas hipotesis, paso a observar el comportamiento real que tiene el programa en ejecucion analizando lo siguiente.
+## 3.4. Fase 4: Análisis dinámico
+Una vez generamos esas hipotesis, paso a observar el comportamiento real que tiene el programa en ejecución analizando lo siguiente:
     
     - Flujo de ejecución.
     - Argumentos de entrada.
@@ -77,10 +77,10 @@ Herramientas que usaria:
     - strace
     - ltrace
     - valgrind
-En esta fase intanto reafirmar la hipotesis anterior, en memoria o en logica de ejecucion.
+En esta fase, intento reafirmar la hipótesis anterior, en memoria o en lógica de ejecución.
 
-## 3.5. Fase 5: Reproduccion y pruebas de concepto.
-El siguiente paso de identificar un comportamiento vulnerabe es reproducirlo de manera estable. Mi prioridad no es contruir un sploit ya sino desarollar una prueba de concepto minimay fiable.
+## 3.5. Fase 5: Reproducción y pruebas de concepto.
+El siguiente paso tras identificar un comportamiento vulnerabe es reproducirlo de manera estable. Mi prioridad no es contruir un sploit ya, sino desarollar una prueba de concepto mínima y fiable.
 
     - ¿El fallo es reproducible?
     - ¿Qué condición exacta lo desencadena?
@@ -88,8 +88,8 @@ El siguiente paso de identificar un comportamiento vulnerabe es reproducirlo de 
     - ¿La corrupción o desviación de flujo es controlable?
 
 
-## 3.6. Fase 6: Evaluacion de explotabilidad.
-No todos los fallos son igual de explotables. Una vez que reproduzco el problema lo evaluo:
+## 3.6. Fase 6: Evaluación de explotabilidad.
+No todos los fallos son igual de explotables. Una vez que reproduzco el problema, evalúo:
 
     - Tipo de primitiva obtenida.
     - Control sobre memoria o flujo de ejecución.
@@ -97,8 +97,8 @@ No todos los fallos son igual de explotables. Una vez que reproduzco el problema
     - Requisitos previos del atacante.
     - Complejidad real para alcanzar ejecución de código, escalada o filtrado de información.
 
-## 3.7. Fase 7: Documentacion y cierre
-Lo ultimo simpre es documentar de forma clara todo el proceso llevado a cabo:
+## 3.7. Fase 7: Documentación y cierre
+Lo último simpre es documentar de forma clara todo el proceso llevado acabo:
 
     - Contexto del objetivo.
     - Herramientas utilizadas.
@@ -107,10 +107,10 @@ Lo ultimo simpre es documentar de forma clara todo el proceso llevado a cabo:
     - Impacto observado.
     - Limitaciones del análisis.
     - Lecciones aprendidas.
-Entiendo esta parte como esencial ya que un tecnico sin su documentacion pierde gran parte de su valor profesional.
+Entiendo esta parte como esencial, ya que un técnico sin su documentación pierde gran parte de su valor profesional.
 
 ## Herramientas principales.
-Mi metodologia no depende de una sola herramienta, sino de una combinacion de varias segun el tipo de objetivo
+Mi metodología no depende de una sola herramienta, sino de una combinacion de varias, según el tipo de objetivo.
 
 ## 4.1. Herramientas principales
 
@@ -130,8 +130,8 @@ Mi enfoque se basa en varios principios:
     - Analizar primero la causa raíz y después la explotación.
     - Documentar incluso los intentos fallidos cuando aporten aprendizaje.
     - Mantener un entorno controlado y ético durante toda la investigación.
-## 5 Caso o ejemplos reales y practicos.
-Aqui incluyo algunos ejemplos de vulnerabilidades reales o ejercicios con binarios vulnerables, orientados a entrenar.
+## 5 Caso o ejemplos reales y prácticos.
+Aquí incluyo algunos ejemplos de vulnerabilidades reales o ejercicios con binarios vulnerables, orientados a entrenar.
 
 ## 5.1. Ejemplo 1: Desbordamiento de búfer en binario de práctica
 Análisis de un binario vulnerable diseñado para practicar técnicas de control de flujo mediante sobrescritura de memoria.
@@ -174,10 +174,10 @@ Aprendizajes principales:
     - Comparar varios write-ups permite identificar patrones comunes.
     - La calidad del análisis depende tanto de la parte técnica como de la capacidad de explicarla.
 
-## 6. Mi aproximacion a la investigacion de 0days.
-Cuando me enfrento a una vulnerabilidad desconocia la cual nunca e explotado, mi labor no consiste en buscar explotacion inmediata sino en buscar un proceso interactivo, validacion y compresion.
+## 6. Mi aproximación a la investigación de 0days.
+Cuando me enfrento a una vulnerabilidad desconocida que nunca he explorado, mi labor no consiste en buscar una explotación inmediata, sino un proceso interactivo, validación y compresión.
 
-## 6.1. Preparacion del objetivo
+## 6.1. Preparación del objetivo
 Primero hay que delimitar el objetivo:
 
     - Qué componente voy a estudiar.
@@ -185,7 +185,7 @@ Primero hay que delimitar el objetivo:
     - Qué superficie de ataque expone.
     - Qué versiones son relevantes.
     - Qué dependencias o formatos procesa.
-Esto ayuda a decidir si el analisis debe orientarse a memoria, logica, parsing, IPC, red o interaccion entre componentes.
+Esto ayuda a decidir si el análisis debe orientarse a memoria, logica, parsing, IPC, red o interacción entre componentes.
 ## 6.2. Fuzzing
 El fuzzing sería una de las primeras técnicas para descubrir comportamientos anómalos. Dependiendo del objetivo, usaría:
   
@@ -222,7 +222,7 @@ Esto permite:
     - Detectar validaciones añadidas.
     - Inferir la naturaleza del fallo original.
 ## 6.6. Entorno de validación
-Todo este proceso lo realizaría en un laboratorio controlado, con:
+Todo este proceso lo realizaría en un laboratorio controlado con:
    
     - Aislamiento de red si es necesario.
     - Snapshots.
@@ -232,9 +232,9 @@ Todo este proceso lo realizaría en un laboratorio controlado, con:
 Mi objetivo sería garantizar que cualquier hallazgo pueda volver a comprobarse más adelante.
 
 ## 7. Concluciones personales
-El analisis de vulnerabilidades debe de entenderse como una disciplina metodica, no como trucos o tecnicas. La combinacion de analisis estatico, analisis dinamico, experiencias controladas y documentacion rigurosa crean resultados mas solidos y profesionales.
+El analisis de vulnerabilidades debe de entenderse como una disciplina metódica, no como trucos o técnicas. La combinación de análisis estático, análisis dinámico, experiencias controladas y documentación rigurosa crean resultados más solidos y profesionales.
 
-En mi opinion las mejores investigaciones no conluyen siempre en el mejor sploit posible si no en un analisis y una explicacion con claridad de porque ocurre un problema, como se reproducen y que enseñanzas deja para futuros analisis.
+En mi opinion, las mejores investigaciones no conluyen siempre en el mejor sploit posible, sino en un análisis y una explicación con claridad de por qué ocurre un problema, cómo se reproducen y qué enseñanzas deja para futuros análisis.
 
 ## 8. Bibliografía y recursos
 En esta sección se recopilan los materiales utilizados como apoyo para el desarrollo del trabajo:
